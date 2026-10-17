@@ -1,0 +1,45 @@
+{
+  "_comment": "Merge into ~/.claude/settings.json. Hooks reference the symlinks install.sh creates.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/answer-style-reminder.sh\"",
+            "timeout": 5,
+            "statusMessage": "Reply-format reminder"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/sensitive-file-guard.sh\"",
+            "timeout": 10,
+            "statusMessage": "Sensitive-file guard"
+          }
+        ]
+      }
+    ],
+    "SessionEnd": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/perf-review-session-end.sh\"",
+            "timeout": 300,
+            "async": true
+          }
+        ]
+      }
+    ]
+  },
+  "skillOverrides": {
+    "split-branch-for-review": "user-invocable-only"
+  }
+}
