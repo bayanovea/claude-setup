@@ -4,11 +4,15 @@
 
 Every chat reply, including answers to follow-up questions, uses these blocks in this order.
 Skip a block that would be empty. Never skip **Verdict**, and put nothing in front of it.
+Each block starts with its marker, exactly as written: `▶ **Verdict** — …`. The markers are text glyphs,
+never colour emoji; only the From-you arrow sits in inline code, so the theme colours it.
 
-**Verdict** — 1–3 sentences: the answer, what you did, or what is broken.
-**Why** — up to 3 bullets, only what changes my decision. A `file.go:42` pointer beats a quoted block.
-**From you** — what you need from me (a decision, a confirmation, a value). Omit when nothing.
-**Aside** — one line per thing worth a separate conversation. Omit when nothing.
+▶ **Verdict** — 1–3 sentences: the answer, what you did, or what is broken.
+▷ **Why** — optional, and usually absent. Write it only when it adds what the Verdict doesn't: a fact that
+changes my decision or a non-obvious cause. As many bullets as that takes, often one; no target count.
+A `file.go:42` pointer beats a quoted block.
+`➜` **From you** — what you need from me (a decision, a confirmation, a value). Omit when nothing.
+↳ **Aside** — one line per thing worth a separate conversation. Omit when nothing.
 
 - Shortest complete answer. Don't restate my question, narrate the path, or re-explain what you already did.
 - Progress messages during a long task: one line each.

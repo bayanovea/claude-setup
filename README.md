@@ -32,7 +32,7 @@ git clone <this repo> ~/AI/claude-setup
 # merge settings.snippet.json into ~/.claude/settings.json, then /hooks or restart
 ```
 
-Check: a reply starts with **Verdict**; asking to read any `.env` raises the ⛔🚨 banner.
+Check: a reply starts with ▶ **Verdict**; asking to read any `.env` raises the ⛔🚨 banner.
 
 ## Design notes
 
