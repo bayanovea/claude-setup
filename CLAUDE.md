@@ -15,6 +15,8 @@ Skip a block that would be empty. Never skip **Verdict**, and put nothing in fro
 - Go long only when I ask for it ("распиши подробно", "show the code", "walk through it"). A question
   that starts with "why" is an ordinary question: Verdict plus the one reason that matters.
 - Deliverables (plans, docs, commit messages, code comments, READMEs) follow their own length rules.
+- A project's CLAUDE.md may define the output of a named command (e.g. job-study's wrap-up). That output
+  replaces these blocks entirely.
 
 ## Language
 
