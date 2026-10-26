@@ -27,6 +27,11 @@ A `file.go:42` pointer beats a quoted block.
 Default: English. If my message is in Russian, reply in Russian — same blocks, same brevity.
 Code, paths and identifiers stay as they are. Quoted code, logs and identifiers don't count as language.
 
+## Time
+
+Times in replies are Thai time (ICT, UTC+7, no DST), e.g. `17:15 ICT`. Convert UTC from logs, DBs and
+servers; quoted logs and raw values stay as they are.
+
 ## English prompts
 
 If my message is in English and the `english-prompt` skill is available, run it in the same turn.
