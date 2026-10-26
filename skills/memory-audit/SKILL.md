@@ -76,19 +76,24 @@ line per group, not per file), what was promoted or moved and where, what the us
 
 ## `--report` mode (headless, launchd every 2 weeks)
 
-Invoked as `/memory-audit --report` by `run-report.sh` (`claude -p`, no user present). In this mode:
+Invoked as `/memory-audit --report` by `run-report.sh` (`claude -p`, no user present). The script
+has already run the mechanical checks and passes their output in the prompt: active projects
+(sessions newer than the previous report), per-project counters, dangling `[[links]]`, unindexed
+files, index lines without a file. In this mode:
 
-- Only projects with a session transcript newer than the previous report (`~/.claude/memory-audit/`,
-  newest `*.md`) are audited; the rest are listed as skipped.
-- **Apply only mechanical fixes**: dangling `[[links]]`, files missing from `MEMORY.md`, index lines
-  without a file, "check / pending by <date>" where the date has passed (delete that sentence, not
-  the file). Never delete, merge or move a file: judgement about what is still true belongs to an
-  interactive run with the user.
-- Everything else from §2 goes into the report as candidates, one line each: file, verdict
-  (delete / trim / merge / move / promote), reason. Add the counters: files, bytes, index lines per
-  project, and which triggers from "When to run" fired.
-- Write the report to `~/.claude/memory-audit/YYYY-MM-DD.md`; the user applies it later with
-  `/memory-audit` in a session. No other output.
+- Memory files are Claude's own notes: read every one of them, including those whose *name* mentions
+  keys or private data (they hold pointers, not secrets). The ALARM rule applies to the files they
+  point to, never to the memory files themselves.
+- **No edits and no backup in this mode**: headless writes under `~/.claude` are refused by the
+  harness, and judgement about what is still true belongs to an interactive run with the user. The
+  mechanical fixes from the script's output and "check / pending by <date>" sentences whose date has
+  passed go into the report as the first section, "Apply next time".
+- A candidate goes into the report only on §2 questions 1–3 (no longer true, task or journal,
+  duplicates the repo) with the evidence (the CLAUDE.md line, the passed date, the renamed command).
+  Style merges and "could be shorter" are not candidates; they only grow the report.
+- Report = counters, fired triggers, mechanical fixes to apply, candidates (file, verdict, evidence),
+  and what the user must decide. Write it to the path given in the prompt
+  (`~/AI/claude-setup/reports/memory-audit/YYYY-MM-DD.md`, gitignored), nothing else.
 
 ## When to run
 
