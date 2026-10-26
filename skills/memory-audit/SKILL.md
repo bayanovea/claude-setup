@@ -74,6 +74,22 @@ Verdict with per-project before → after counts, then one list: what was delete
 line per group, not per file), what was promoted or moved and where, what the user must decide
 (e.g. a memory that contradicts a current instruction). Keep the backup path in the report.
 
+## `--report` mode (headless, launchd every 2 weeks)
+
+Invoked as `/memory-audit --report` by `run-report.sh` (`claude -p`, no user present). In this mode:
+
+- Only projects with a session transcript newer than the previous report (`~/.claude/memory-audit/`,
+  newest `*.md`) are audited; the rest are listed as skipped.
+- **Apply only mechanical fixes**: dangling `[[links]]`, files missing from `MEMORY.md`, index lines
+  without a file, "check / pending by <date>" where the date has passed (delete that sentence, not
+  the file). Never delete, merge or move a file: judgement about what is still true belongs to an
+  interactive run with the user.
+- Everything else from §2 goes into the report as candidates, one line each: file, verdict
+  (delete / trim / merge / move / promote), reason. Add the counters: files, bytes, index lines per
+  project, and which triggers from "When to run" fired.
+- Write the report to `~/.claude/memory-audit/YYYY-MM-DD.md`; the user applies it later with
+  `/memory-audit` in a session. No other output.
+
 ## When to run
 
 - A project memory index passes ~25 lines, or a file passes ~2 KB.
