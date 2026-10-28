@@ -1,9 +1,9 @@
 ---
-name: before-clear
-description: Persist what this session learned before the context is wiped. Use on /before-clear, or when the user says they are about to run /clear, /compact, start a new session, or asks to "save what needs saving". Writes durable facts to auto-memory, open work to the repo (plan Post-Completion, backlog, project CLAUDE.md), then reports what was saved and what was deliberately dropped.
+name: save-clear
+description: Persist what this session learned, then clear the context. Use on /save-clear, or when the user says they are about to run /clear, /compact, start a new session, or asks to "save what needs saving and clear". Writes durable facts to auto-memory, open work to the repo (plan Post-Completion, backlog, project CLAUDE.md), reports what was saved and dropped, then types /clear into the session itself when running under agterm.
 ---
 
-# Before clear
+# Save, then clear
 
 The context is about to disappear. Everything worth keeping must land in a file now; everything
 else is noise and must not be written anywhere. Default is to save little: a session that produced
@@ -50,9 +50,29 @@ dates. Never put content into `MEMORY.md`, only the one-line pointer.
 Uncommitted changes in the working tree are not yours to save: mention them in the report so the
 user decides.
 
-## 3. Report
+## 3. Schedule the clear, then report
 
-Standard reply blocks. Verdict: how many items saved and where, in one sentence. Then one list:
-each saved item with its path, and one line for what was considered and dropped (grouped, with the
-reason). `From you`: uncommitted changes, and any item you could not place. If nothing was worth
-saving, say so in one sentence and stop.
+`/clear` is a CLI command, not a tool: the model cannot run it directly. Under agterm the session
+can type it into itself. If a question for the user is still open (step 2 produced an item you
+could not place, or uncommitted changes need a decision), skip this step, ask, and let the user
+clear by hand — a `/clear` landing on top of an unanswered question loses the question.
+
+When `AGTERM_ENABLED=1` and `AGTERM_SESSION_ID` is set, as the **last tool call** of the turn:
+
+```bash
+(nohup sh -c 'sleep 4; agtermctl session type "/clear
+" --target "$AGTERM_SESSION_ID" --socket "$AGTERM_SOCKET"' >/dev/null 2>&1 &)
+```
+
+The delay lets the report below reach the screen first; the detached shell survives the tool
+call. The keystrokes land in the prompt buffer the user also types into, so the report must warn
+in one line that `/clear` fires in a few seconds. If the typed command arrives as a queued message
+instead of executing, say so once in the next session's first reply and leave the clear to the
+user — do not retry typing.
+
+Outside agterm: end the report with one line asking the user to run `/clear`.
+
+Then the report, in standard reply blocks. Verdict: how many items saved and where, in one
+sentence, plus the clear notice. Then one list: each saved item with its path, and one line for
+what was considered and dropped (grouped, with the reason). `From you`: uncommitted changes, and
+any item you could not place. If nothing was worth saving, say so in one sentence.

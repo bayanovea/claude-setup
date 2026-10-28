@@ -13,7 +13,7 @@ employer-independent and symlinked into `~/.claude` by `install.sh`.
 | `hooks/perf-review-session-end.sh` | `SessionEnd` | For projects that opt in (`perf-review-track: true` in `CLAUDE.local.md`): distils the session transcript into a performance-review file via a headless `claude -p` call with a $1 budget |
 | `skills/english-prompt` | skill | Corrects my English prompt, fills small gaps, appends one record to a learning corpus, then runs the task. Runs on every English message |
 | `skills/english-review` | skill | Periodic pass over that corpus: error classes, accuracy per class, CEFR rating with evidence, drills built from my own sentences |
-| `skills/before-clear` | skill | Run before `/clear`: walks the session, routes durable facts to auto-memory, open work to plans/backlog, and reports what was saved and what was dropped |
+| `skills/save-clear` | skill | `/save-clear`: walks the session, routes durable facts to auto-memory and open work to plans/backlog, reports, then types `/clear` into its own agterm session |
 | `skills/perf-review-log` | skill | Merges significant work into one review artifact without turning it into a log |
 | `skills/unit-test-writer` | skill | Behaviour-first unit tests, table-driven, mock at boundaries only |
 | `skills/split-branch-for-review` | skill (manual only) | Rewrites a squash-merged branch into a sequence a reviewer can read top to bottom |
