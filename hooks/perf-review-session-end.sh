@@ -48,7 +48,9 @@ fi
 
 {
   echo "=== $(date '+%Y-%m-%d %H:%M:%S') SessionEnd project=$cwd ==="
-  claude -p "/perf-review-log $condensed" \
+  # Scrubbed so the headless run cannot rename or badge the agterm session it was spawned from.
+  env -u AGTERM_ENABLED -u AGTERM_SESSION_ID -u AGTERM_PANE -u AGTERM_PANE_ID \
+    claude -p "/perf-review-log $condensed" \
     --allowedTools "Read,Edit" \
     --add-dir "$REVIEW_DIR" \
     --add-dir "$workdir" \

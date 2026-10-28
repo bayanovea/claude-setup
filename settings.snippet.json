@@ -24,6 +24,16 @@
             "statusMessage": "Reply-format reminder"
           }
         ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/agterm-session-name.sh\"",
+            "timeout": 15,
+            "async": true
+          }
+        ]
       }
     ],
     "PreToolUse": [
@@ -46,6 +56,31 @@
             "type": "command",
             "command": "\"$HOME/.claude/hooks/perf-review-session-end.sh\"",
             "timeout": 300,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/agterm-session-name.sh\"",
+            "timeout": 15,
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "startup|clear",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/agterm-session-name.sh\"",
+            "timeout": 15,
             "async": true
           }
         ]
