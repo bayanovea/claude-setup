@@ -10,6 +10,7 @@ employer-independent and symlinked into `~/.claude` by `install.sh`.
 | `CLAUDE.md` | Global rules for every project | Reply format with fixed labelled blocks (Verdict / Why / From you / Aside), language rule, how I want agents to work, sensitive-data stop, code-comment and plan rules |
 | `hooks/answer-style-reminder.sh` | `UserPromptSubmit` | Re-injects the reply-format rule every turn. `CLAUDE.md` is read once per session and loses weight in a long context; this doesn't |
 | `hooks/sensitive-file-guard.sh` | `PreToolUse` / `Read` | Pauses reads of files whose *name* looks like secrets (`.env`, `*.pem`, `credentials`, …) and asks for explicit approval. Name-based on purpose — content matching would fire on every IP in normal code |
+| `hooks/agterm-idle-after-clear.sh` | `Notification` / `idle_prompt` | Under agterm, clears the unseen badge left by the idle ping of a session with no reply yet (right after `/clear`). Claude Code cannot mute only that ping |
 | `hooks/perf-review-session-end.sh` | `SessionEnd` | For projects that opt in (`perf-review-track: true` in `CLAUDE.local.md`): distils the session transcript into a performance-review file via a headless `claude -p` call with a $1 budget |
 | `skills/english-prompt` | skill | Corrects my English prompt, fills small gaps, appends one record to a learning corpus, then runs the task. Runs on every English message |
 | `skills/english-review` | skill | Periodic pass over that corpus: error classes, accuracy per class, CEFR rating with evidence, drills built from my own sentences |

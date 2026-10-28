@@ -1,6 +1,19 @@
 {
   "_comment": "Merge into ~/.claude/settings.json. Hooks reference the symlinks install.sh creates.",
   "hooks": {
+    "Notification": [
+      {
+        "matcher": "idle_prompt",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$HOME/.claude/hooks/agterm-idle-after-clear.sh\"",
+            "timeout": 10,
+            "async": true
+          }
+        ]
+      }
+    ],
     "UserPromptSubmit": [
       {
         "hooks": [
