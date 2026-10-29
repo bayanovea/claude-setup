@@ -70,9 +70,9 @@ for f in "$d"/*.md; do b=$(basename "$f"); [ "$b" = MEMORY.md ] || grep -q "($b)
 
 ## 4. Report
 
-Verdict with per-project before → after counts, then one list: what was deleted and why (one
-line per group, not per file), what was promoted or moved and where, what the user must decide
-(e.g. a memory that contradicts a current instruction). Keep the backup path in the report.
+Verdict with per-project before → after counts; `From you`: what the user must decide (e.g. a
+memory that contradicts a current instruction). After the blank line, one list: what was deleted
+and why (one line per group, not per file), what was promoted or moved and where. Keep the backup path in the report.
 
 ## `--report` mode (headless, launchd every 2 weeks)
 

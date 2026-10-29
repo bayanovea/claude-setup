@@ -8,11 +8,15 @@ Each block starts with its marker, exactly as written: `▶ **Verdict** — …`
 never colour emoji; only the From-you arrow sits in inline code, so the theme colours it.
 
 ▶ **Verdict** — 1–3 sentences: the answer, what you did, or what is broken.
+`➜` **From you** — what you need from me (a decision, a confirmation, a value). Omit when nothing.
+
 ▷ **Why** — optional, and usually absent. Write it only when it adds what the Verdict doesn't: a fact that
 changes my decision or a non-obvious cause. As many bullets as that takes, often one; no target count.
 A `file.go:42` pointer beats a quoted block.
-`➜` **From you** — what you need from me (a decision, a confirmation, a value). Omit when nothing.
 ↳ **Aside** — one line per thing worth a separate conversation. Omit when nothing.
+
+Verdict and From you come first because often they are all I read. One blank line, and no separator
+line, sets them apart from Why and Aside; the lines inside each group have no blank lines between them.
 
 - Shortest complete answer. Don't restate my question, narrate the path, or re-explain what you already did.
 - Progress messages during a long task: one line each.

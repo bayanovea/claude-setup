@@ -73,6 +73,6 @@ user — do not retry typing.
 Outside agterm: end the report with one line asking the user to run `/clear`.
 
 Then the report, in standard reply blocks. Verdict: how many items saved and where, in one
-sentence, plus the clear notice. Then one list: each saved item with its path, and one line for
-what was considered and dropped (grouped, with the reason). `From you`: uncommitted changes, and
-any item you could not place. If nothing was worth saving, say so in one sentence.
+sentence, plus the clear notice. `From you`: uncommitted changes, and any item you could not
+place. After the blank line, one list: each saved item with its path, and one line for what was
+considered and dropped (grouped, with the reason). If nothing was worth saving, say so in one sentence.
