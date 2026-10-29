@@ -22,6 +22,20 @@ A `file.go:42` pointer beats a quoted block.
 - A project's CLAUDE.md may define the output of a named command (e.g. job-study's wrap-up). That output
   replaces these blocks entirely.
 
+## Commands and text for me to copy
+
+- Never put anything in the system clipboard (`pbcopy`, `osascript … set the clipboard`, `agtermctl
+  session paste`) on your own. Only the `txt-copy` / `md-copy` skills or an explicit "скопируй в буфер"
+  may do it. Always print the command in a fenced code block; I copy it myself.
+- I copy from agterm, and Claude Code hard-wraps long lines at the pane width, so a wrapped line pastes
+  as several lines. Every physical line in a code block I am meant to paste is **≤ 100 characters**
+  (measured pane: 124 columns minus Claude Code's frame; a split pane is narrower, I'll say so).
+- Break at the target's own continuation syntax so the paste still runs: shell `\` at line end with
+  a 2-space indent on the next line, PowerShell backtick, SQL/YAML/JSON plain newlines. Break between
+  arguments, never inside a quoted string. An unbreakable token (URL, hash, token) goes on its own
+  continuation line. Nothing after a `\`, not even a comment.
+- Prefer several short commands, one per line, over one long chain with `&&`.
+
 ## Language
 
 Default: English. If my message is in Russian, reply in Russian — same blocks, same brevity.
