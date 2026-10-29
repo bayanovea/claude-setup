@@ -89,5 +89,7 @@
   },
   "skillOverrides": {
     "split-branch-for-review": "user-invocable-only"
-  }
+  },
+  "tui": "fullscreen",
+  "viewMode": "focus"
 }

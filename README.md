@@ -22,7 +22,7 @@ employer-independent and symlinked into `~/.claude` by `install.sh`.
 | `templates/AGENTS.md` + `CLAUDE.local.md` | per-repo template | One tool-agnostic rules file read by Claude Code, Codex and OpenCode |
 | `reference/ralphex-roles/` | prompts | Five review roles (implementation, testing, quality, simplification, documentation) usable as subagent prompts in any multi-agent review |
 | `reference/task-spec-format.md` | format | Three-section task description: what exists / what to change / resulting scenario and checks |
-| `settings.snippet.json` | settings | The hook and skill-override entries to merge into `~/.claude/settings.json` |
+| `settings.snippet.json` | settings | The hook, skill-override and display entries to merge into `~/.claude/settings.json`. `tui: fullscreen` + `viewMode: focus` show one line per tool call and the reply; `Ctrl+O` expands the rest |
 
 Private data (the English corpus, review artifacts) lives outside this repo:
 `~/AI/english-learning/`, `~/Work/perf-review/`.
