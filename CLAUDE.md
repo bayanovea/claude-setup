@@ -49,8 +49,8 @@ servers; quoted logs and raw values stay as they are.
 ## English prompts
 
 If my message is in English and the `english-prompt` skill is available, run it in the same turn.
-This is unconditional and overrides the brevity rules. Render its output after the answer as one
-marked block, e.g. `> 🇬🇧 **English** — …`, so answer and language feedback are visibly separate.
+This is unconditional. Corrections go only to the corpus; never show a corrected prompt or a
+corrections list in the reply — I review errors in `english-learning`, grouped.
 
 ## How I want you to work
 
