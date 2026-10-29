@@ -49,8 +49,7 @@ servers; quoted logs and raw values stay as they are.
 ## English prompts
 
 If my message is in English and the `english-prompt` skill is available, run it in the same turn.
-This is unconditional. Corrections go only to the corpus; never show a corrected prompt or a
-corrections list in the reply — I review errors in `english-learning`, grouped.
+This is unconditional.
 
 ## How I want you to work
 

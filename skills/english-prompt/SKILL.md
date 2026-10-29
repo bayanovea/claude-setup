@@ -13,16 +13,14 @@ If there is no text after the command, ask for an English prompt and stop.
 
 **Main constraint: never slow the working flow.** Error-class analysis, statistics and level
 assessment are not done here — the separate `english-review` skill does that on demand. Here: only
-the task itself, plus one append to the corpus. Corrections are **never shown in the reply**: the
-user works through them later, grouped, via `english-review`.
+one append to the corpus; corrections never appear in the reply.
 
 ## 1. Correct the English
 
 - Fix every error of any kind: grammar, articles, prepositions, tenses, word order, word choice,
   idiom, register (formal / IT style).
 - If the thought is built differently in natural English, rewrite the sentence, don't patch it word by word.
-- Keep the result for the corpus only (`corrected`, `fixes`): real errors, `wrong → right` + one
-  line why. Don't invent corrections to fill space. Nothing of this goes into the reply.
+- Record real errors only: `wrong → right` + one line why. Don't invent corrections to fill space.
 
 ## 2. Enrich the prompt
 
@@ -66,5 +64,4 @@ JSONL
 
 ## 4. Execute the task
 
-Run the corrected and enriched prompt as an ordinary task. The reply is the executed task only,
-with no language block.
+Run the corrected and enriched prompt as an ordinary task.
