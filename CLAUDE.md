@@ -62,6 +62,8 @@ This is unconditional.
   global logic for a narrow edge case — look for the model that already represents that case.
 - Tests: add or adjust them when behaviour changes. If the touched area has none, ask first.
 - Code: simple, compact, matching the surrounding style. No clever abstractions.
+- Commits and PRs: no Claude attribution, ever (no `Co-Authored-By: Claude`, no "Generated with Claude
+  Code"); a PreToolUse hook blocks it.
 - Agent git worktrees: create them outside the project directory, or remove them as soon as the
   branches are ready. IDE indexing of several copies of a large repo hangs the machine.
 
