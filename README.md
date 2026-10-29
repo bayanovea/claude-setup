@@ -19,6 +19,7 @@ employer-independent and symlinked into `~/.claude` by `install.sh`.
 | `skills/perf-review-log` | skill | Merges significant work into one review artifact without turning it into a log |
 | `skills/unit-test-writer` | skill | Behaviour-first unit tests, table-driven, mock at boundaries only |
 | `skills/split-branch-for-review` | skill (manual only) | Rewrites a squash-merged branch into a sequence a reviewer can read top to bottom |
+| `skills/make-text-not-ai` | skill | Strips the AI fingerprint from any text (EN/RU) without changing facts, meaning or register. Three tiers: delete on sight, fix above a density threshold, leave alone; then a shape pass, since detectors weigh structure over words. Marker lists and the source numbers live in `references/` |
 | `templates/AGENTS.md` + `CLAUDE.local.md` | per-repo template | One tool-agnostic rules file read by Claude Code, Codex and OpenCode |
 | `reference/ralphex-roles/` | prompts | Five review roles (implementation, testing, quality, simplification, documentation) usable as subagent prompts in any multi-agent review |
 | `reference/task-spec-format.md` | format | Three-section task description: what exists / what to change / resulting scenario and checks |
